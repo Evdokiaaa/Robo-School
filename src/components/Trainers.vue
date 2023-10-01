@@ -11,21 +11,21 @@
           <p class="trainer__desc">{{ trainer.desc }}</p>
           <button class="trainer__btn">Подробнее</button>
         </div>
+        <div class="trainers__btns">
+          <button>
+            <img src="../assets/arrow-left.svg" alt="" />
+          </button>
+          <button>
+            <img src="../assets/arrow-right.svg" alt="" />
+          </button>
+        </div>
       </div>
       <!--TODO LATER + заменить последнию картинку-->
-
-      <div class="trainers__btns">
-        <button>
-          <img src="../assets/arrow-left.svg" alt="" />
-        </button>
-        <button>
-          <img src="../assets/arrow-right.svg" alt="" />
-        </button>
-      </div>
     </div>
   </section>
 </template>
 <script setup>
+import { ref } from "vue";
 const trainers = [
   {
     id: 1,
@@ -64,6 +64,7 @@ const trainers = [
     desc: "преподаватель по программированию",
   },
 ];
+const containerRef = ref(null);
 </script>
 <style lang="scss" scoped>
 .trainers {
@@ -73,6 +74,12 @@ const trainers = [
       font-size: 50px;
 
       font-weight: 600;
+      @media screen and (max-width: 1024px) {
+        text-align: center;
+      }
+      @media screen and (max-width: 624px) {
+        font-size: 30px;
+      }
     }
   }
   &__btns {
@@ -91,6 +98,9 @@ const trainers = [
   &__img {
     margin-bottom: 20px;
     border-radius: 20px;
+    height: 300px;
+    @media screen and (max-width: 624px) {
+    }
   }
 
   &__name {
@@ -121,5 +131,16 @@ const trainers = [
   overflow-x: auto;
   align-items: center;
   gap: 40px;
+  padding-bottom: 20px;
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    color: red;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #141024;
+    border-radius: 40px;
+  }
 }
 </style>

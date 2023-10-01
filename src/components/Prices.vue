@@ -48,6 +48,9 @@ const prices = [
       @media screen and (max-width: 1024px) {
         text-align: center;
       }
+      @media screen and (max-width: 624px) {
+        font-size: 30px;
+      }
     }
   }
   &__container {

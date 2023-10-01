@@ -47,6 +47,9 @@ const benefits = [
     h2 {
       font-size: 50px;
       font-weight: 600;
+      @media screen and (max-width: 624px) {
+        font-size: 30px;
+      }
     }
   }
   &__container {
