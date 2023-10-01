@@ -11,14 +11,6 @@
           <p class="trainer__desc">{{ trainer.desc }}</p>
           <button class="trainer__btn">Подробнее</button>
         </div>
-        <div class="trainers__btns">
-          <button>
-            <img src="../assets/arrow-left.svg" alt="" />
-          </button>
-          <button>
-            <img src="../assets/arrow-right.svg" alt="" />
-          </button>
-        </div>
       </div>
       <!--TODO LATER + заменить последнию картинку-->
     </div>
