@@ -9,21 +9,62 @@
           <img class="trainer__img" :src="trainer.img" :alt="trainer.name" />
           <h4 class="trainer__name">{{ trainer.name }}</h4>
           <p class="trainer__desc">{{ trainer.desc }}</p>
-          <button class="trainer__btn">Подробнее</button>
+          <button class="trainer__btn" @click="openModal(trainer)">
+            Подробнее
+          </button>
         </div>
       </div>
-      <!--TODO LATER + заменить последнию картинку-->
     </div>
+    <TrainerModal
+      v-if="menuIsClicked"
+      :trainer="selectedTrainer"
+      @close="closeModal"
+    />
   </section>
 </template>
 <script setup>
+//TODO В JSON вынести потом
 import { ref } from "vue";
+import TrainerModal from "./UI/TrainerModal.vue";
 const trainers = [
   {
     id: 1,
     img: "src/assets/trainer-1.jpg",
     name: "Ирина Лайм",
     desc: "преподаватель по робототехнике",
+    education: {
+      startDate: "Сентябрь 1995",
+      endDate: "Июнь 2000",
+      university:
+        "Санкт-Петербургский политехнический университет Петра Великого",
+      faculty: "Факультет Компьютерных наук и технологий",
+      specialty: "Математика и компьютерные науки",
+      formOfStudy: "Очная",
+    },
+    workExperience: [
+      {
+        startDate: "Июнь 2000",
+        endDate: "Декабрь 2005",
+        position: "Программист",
+        company: "Компания ABC",
+        responsibilities: [
+          "Разработка программного обеспечения",
+          "Тестирование и отладка программ",
+          "Участие в проектировании систем",
+        ],
+      },
+      {
+        startDate: "Январь 2006",
+        endDate: "Сентябрь 2012",
+        position: "Ведущий разработчик",
+        company: "Компания XYZ",
+        responsibilities: [
+          "Руководство проектами",
+          "Разработка сложных компонентов системы",
+          "Обучение новых сотрудников",
+        ],
+      },
+    ],
   },
   {
     id: 2,
@@ -56,7 +97,16 @@ const trainers = [
     desc: "преподаватель по программированию",
   },
 ];
-const containerRef = ref(null);
+const selectedTrainer = ref(null);
+const menuIsClicked = ref(false);
+const openModal = (trainer) => {
+  menuIsClicked.value = !menuIsClicked.value;
+  selectedTrainer.value = trainer;
+};
+const closeModal = () => {
+  console.log("Нажали на кнопку закрыть ");
+  menuIsClicked.value = false;
+};
 </script>
 <style lang="scss" scoped>
 .trainers {
