@@ -16,11 +16,10 @@
       </div>
       <div class="trainers__bottom">
         <div class="trainer__achievements">
-          <p class="trainer__achievements-1" @click="showEducation">
+          <p class="trainer__achievements-1" @click="showEducation" :class="{ redText: isEducationActive }">
             Образование
           </p>
-          <p class="trainer__achievements-1" @click="showExp">Опыт работы</p>
-          <p class="trainer__achievements-1" @click="showRewards">Награды</p>
+          <p class="trainer__achievements-1" @click="showExp" :class="{ redText: isExpActive }">Опыт работы</p>
         </div>
         <div class="trainers__bottom-content">
           <div class="trainers__achievement" v-if="selectedTab === 'education'">
@@ -67,17 +66,26 @@ const props = defineProps({
     required: true,
   },
 });
+
+const isEducationActive = ref(true)
+const isExpActive = ref(false)
 const showEducation = () => {
   selectedTab.value = "education";
+  isEducationActive.value = true;
+  isExpActive.value = false;
+
 };
 const showExp = () => {
   selectedTab.value = "experience";
+  isEducationActive.value = false;
+  isExpActive.value = true;
 };
 </script>
 <style lang="scss" scoped>
 .trainers__modal {
-  position: fixed;
-  top: 10%;
+  position: absolute;
+  z-index: 100;
+  top: 0;
   left: 25%;
   right: 0;
   width: 940px;
@@ -128,8 +136,8 @@ const showExp = () => {
 }
 .trainer__achievements {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-bottom: 1px solid #fff;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid #1410241C;
   padding-bottom: 20px;
 }
 .trainers__bottom-content {
@@ -144,7 +152,10 @@ const showExp = () => {
     margin-bottom: 20px;
   }
 }
-.trainers__achievements {
+.trainer__achievements-1 {
   cursor: pointer;
+}
+.redText{
+  color:red;
 }
 </style>
