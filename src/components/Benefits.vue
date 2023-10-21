@@ -18,6 +18,8 @@
   </section>
 </template>
 <script setup>
+import { ref } from "vue";
+
 const benefits = [
   {
     id: 1,
@@ -33,9 +35,17 @@ const benefits = [
     id: 3,
     title: "Практику",
     desc: "Возможность пройти практику по преподаванию робототехники на базе R:ED LAB (в оффлайн или онлайн формате)",
+    addition: "При наличие свободных мест",
   },
 ];
+const additionIsOpen = ref(false);
+const showMenu = () => {
+  additionIsOpen.value = !additionIsOpen.value;
+};
+
+
 </script>
+
 <style lang="scss" scoped>
 .benefits {
   background: #f9f9f9;
@@ -56,6 +66,7 @@ const benefits = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+
     @media screen and (max-width: 624px) {
       grid-template-columns: repeat(1, 1fr);
       text-align: center;
@@ -72,4 +83,5 @@ const benefits = [
     padding-bottom: 100px;
   }
 }
+
 </style>

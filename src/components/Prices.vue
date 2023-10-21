@@ -71,6 +71,10 @@ const prices = [
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: 0.25s linear;
+  &:hover {
+    transform: translate(0px, -30px);
+  }
   &:nth-child(1) {
     background: #141024;
     color: #fff;

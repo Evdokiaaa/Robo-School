@@ -12,7 +12,9 @@
             v-for="block in aboutInfo"
             :key="block.id"
           >
-            <h2 class="about__information-count">{{ block.count }}</h2>
+            <h2 class="about__information-count" >
+              {{ block.count }}
+            </h2>
             <p class="about__information-subtitle">{{ block.desc }}</p>
           </div>
         </div>
@@ -21,6 +23,8 @@
   </section>
 </template>
 <script setup>
+import { ref } from "vue";
+
 const aboutInfo = [
   {
     id: 1,
@@ -44,6 +48,7 @@ const aboutInfo = [
   },
 ];
 </script>
+
 <style lang="scss" scoped>
 .about {
   padding: 120px 0 60px 0;
@@ -82,6 +87,11 @@ const aboutInfo = [
     &-count {
       font-size: 70px;
       color: #d52027;
+      // opacity: 0;
+      // transform: scale(0);
+      // transition: opacity 0.5s ease, transform 0.5s ease;
+
+      /* Добавьте анимацию для входа элемента */
     }
     &-subtitle {
       color: rgba(20, 16, 36, 0.7);
@@ -89,4 +99,5 @@ const aboutInfo = [
     }
   }
 }
+
 </style>
