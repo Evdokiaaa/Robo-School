@@ -10,16 +10,26 @@
             <!--TODO Тут будут социальные сети. сделать v-if='social'-->
           </div>
         </div>
-        <div class="close">
-          <button class="close__btn" @click="$emit('close')">Закрыть</button>
+        <div class="close" @click="$emit('close')">
+          <button class="close__btn"></button>
         </div>
       </div>
       <div class="trainers__bottom">
         <div class="trainer__achievements">
-          <p class="trainer__achievements-1" @click="showEducation" :class="{ redText: isEducationActive }">
+          <p
+            class="trainer__achievements-1"
+            @click="showEducation"
+            :class="{ redText: isEducationActive }"
+          >
             Образование
           </p>
-          <p class="trainer__achievements-1" @click="showExp" :class="{ redText: isExpActive }">Опыт работы</p>
+          <p
+            class="trainer__achievements-1"
+            @click="showExp"
+            :class="{ redText: isExpActive }"
+          >
+            Опыт работы
+          </p>
         </div>
         <div class="trainers__bottom-content">
           <div class="trainers__achievement" v-if="selectedTab === 'education'">
@@ -67,13 +77,12 @@ const props = defineProps({
   },
 });
 
-const isEducationActive = ref(true)
-const isExpActive = ref(false)
+const isEducationActive = ref(true);
+const isExpActive = ref(false);
 const showEducation = () => {
   selectedTab.value = "education";
   isEducationActive.value = true;
   isExpActive.value = false;
-
 };
 const showExp = () => {
   selectedTab.value = "experience";
@@ -119,6 +128,7 @@ const showExp = () => {
   }
 }
 .close {
+  cursor: pointer;
   &__btn {
     border: none;
     background: none;
@@ -137,7 +147,7 @@ const showExp = () => {
 .trainer__achievements {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border-bottom: 1px solid #1410241C;
+  border-bottom: 1px solid #1410241c;
   padding-bottom: 20px;
 }
 .trainers__bottom-content {
@@ -155,7 +165,7 @@ const showExp = () => {
 .trainer__achievements-1 {
   cursor: pointer;
 }
-.redText{
-  color:red;
+.redText {
+  color: red;
 }
 </style>

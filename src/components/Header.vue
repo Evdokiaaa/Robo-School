@@ -6,9 +6,13 @@
       </div>
       <nav class="header__nav">
         <ul class="header__menu-items">
-          <li class="header__menu-item">О школе</li>
-          <li class="header__menu-item">Тренеры</li>
-          <li class="header__menu-item">Стоимость</li>
+          <li class="header__menu-item" @click="scrollTo('#about')">О школе</li>
+          <li class="header__menu-item" @click="scrollTo('#trainers')">
+            Тренеры
+          </li>
+          <li class="header__menu-item" @click="scrollTo('#pricing')">
+            Стоимость
+          </li>
         </ul>
       </nav>
       <div class="header__phone-container">
@@ -26,9 +30,13 @@
             <div class="menu" v-if="openMenu">
               <ul class="menu__items">
                 <div class="close" @click="openMenu = !openMenu"></div>
-                <li class="menu__item">О школе</li>
-                <li class="menu__item">Тренеры</li>
-                <li class="menu__item">Стоимость</li>
+                <li class="menu__item" @click="scrollTo('#about')">О школе</li>
+                <li class="menu__item" @click="scrollTo('#trainers')">
+                  Тренеры
+                </li>
+                <li class="menu__item" @click="scrollTo('#pricing')">
+                  Стоимость
+                </li>
               </ul>
             </div>
 
@@ -45,11 +53,16 @@
 <script setup>
 import { ref } from "vue";
 import PhoneModal from "./UI/PhoneModal.vue";
-import Menu from "./UI/Menu.vue";
+import { scrollToSection } from "../helpers/scrollConfig.js";
+// import Menu from "./UI/Menu.vue";
 const phoneIsClicked = ref(false);
 const openMenu = ref(false);
+console.log(scroll);
 const showPhone = () => {
   phoneIsClicked.value = !phoneIsClicked.value;
+};
+const scrollTo = (section) => {
+  scrollToSection(section, 500);
 };
 </script>
 <style lang="scss">
@@ -174,7 +187,7 @@ const showPhone = () => {
 .close {
   position: absolute;
   right: 10px;
-  top: 4px;
+  top: 10px;
   width: 32px;
   height: 32px;
   opacity: 0.3;

@@ -1,5 +1,5 @@
 <template>
-  <section class="prices">
+  <section class="prices" id="pricing">
     <div class="container">
       <div class="prices__title-container">
         <h2>Выберите нужный пакет</h2>
@@ -10,7 +10,9 @@
           <!--TODO-->
           <h3 class="price__price">{{ price.price }} ₽</h3>
           <p class="price__desc">{{ price.desc }}</p>
-          <button class="price__btn">Оставить заявку</button>
+          <button class="price__btn" @click="scrollTo('#application')">
+            Оставить заявку
+          </button>
         </div>
       </div>
     </div>
@@ -37,6 +39,12 @@ const prices = [
     desc: "УМК по робототетхнике",
   },
 ];
+
+import { scrollToSection } from "../helpers/scrollConfig.js";
+
+const scrollTo = (section) => {
+  scrollToSection(section, 500);
+};
 </script>
 <style lang="scss" scoped>
 .prices {

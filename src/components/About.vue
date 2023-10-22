@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section class="about" id="about">
     <div class="container">
       <div class="about__container">
         <h4 class="about__title">
@@ -12,7 +12,7 @@
             v-for="block in aboutInfo"
             :key="block.id"
           >
-            <h2 class="about__information-count" >
+            <h2 class="about__information-count">
               {{ block.count }}
             </h2>
             <p class="about__information-subtitle">{{ block.desc }}</p>
@@ -99,5 +99,4 @@ const aboutInfo = [
     }
   }
 }
-
 </style>

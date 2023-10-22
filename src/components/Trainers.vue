@@ -1,5 +1,5 @@
 <template>
-  <section class="trainers">
+  <section class="trainers" id="trainers">
     <div class="container">
       <div class="trainers__title-container">
         <h2>Профессиональные тренеры</h2>

@@ -1,5 +1,5 @@
 <template>
-  <section class="application">
+  <section class="application" id="application">
     <div class="container">
       <div class="application__container">
         <div class="application__left">

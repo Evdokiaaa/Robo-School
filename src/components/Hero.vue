@@ -9,7 +9,9 @@
               Курсы повышения квалификации по робототехнике для педагогов
               начальной школы
             </p>
-            <button class="hero__btn">Записаться на курс</button>
+            <button class="hero__btn" @click="scrollTo('#application')">
+              Записаться на курс
+            </button>
           </div>
         </div>
         <div class="hero__right">
@@ -22,7 +24,13 @@
     <PhoneModal />
   </section>
 </template>
-<script setup></script>
+<script setup>
+import { scrollToSection } from "../helpers/scrollConfig.js";
+
+const scrollTo = (section) => {
+  scrollToSection(section, 500);
+};
+</script>
 
 <style lang="scss" scoped>
 .hero {
