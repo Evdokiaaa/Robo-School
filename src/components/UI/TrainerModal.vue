@@ -99,9 +99,6 @@ const showExp = () => {
   left: 0;
   bottom: 0;
   margin: auto;
-  // top: 0;
-  // left: 25%;
-  // right: 0;
   max-width: 940px;
   height: 768px;
   background-color: rgba(0, 0, 0, 0.3);
