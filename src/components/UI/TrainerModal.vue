@@ -95,9 +95,14 @@ const showExp = () => {
   position: absolute;
   z-index: 100;
   top: 0;
-  left: 25%;
   right: 0;
-  width: 940px;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  // top: 0;
+  // left: 25%;
+  // right: 0;
+  max-width: 940px;
   height: 768px;
   background-color: rgba(0, 0, 0, 0.3);
   background: #f3f3f3;
@@ -112,6 +117,11 @@ const showExp = () => {
       width: 150px;
       border-radius: 20px;
     }
+    @media screen and (max-width: 625px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 .trainer {
@@ -125,6 +135,10 @@ const showExp = () => {
     &-desc {
       color: rgba(20, 16, 36, 0.7);
     }
+    @media screen and (max-width: 625px) {
+      text-align: center;
+      margin-top: 10px;
+    }
   }
 }
 .close {
@@ -136,8 +150,7 @@ const showExp = () => {
     cursor: pointer;
   }
 }
-.close__modal {
-}
+
 .trainer__modal-container {
   padding: 40px;
 }
@@ -149,6 +162,14 @@ const showExp = () => {
   grid-template-columns: repeat(2, 1fr);
   border-bottom: 1px solid #1410241c;
   padding-bottom: 20px;
+  @media screen and (max-width: 625px) {
+    display: flex;
+    justify-content: space-around;
+  }
+  @media screen and (max-width: 375px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .trainers__bottom-content {
   max-width: 100%;
@@ -156,6 +177,12 @@ const showExp = () => {
   padding-top: 40px;
   white-space: nowrap;
   overflow-y: scroll;
+  @media screen and (max-width: 625px) {
+    height: 300px;
+  }
+  @media screen and (max-width: 375px) {
+    height: 250px;
+  }
 }
 .selected {
   div {

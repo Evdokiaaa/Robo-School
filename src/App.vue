@@ -1,11 +1,13 @@
 <template>
   <Header />
-  <Hero />
-  <About />
-  <Benefits />
-  <Trainers />
-  <Prices />
-  <Application />
+  <main class="main">
+    <Hero />
+    <About />
+    <Benefits />
+    <Trainers />
+    <Prices />
+    <Application />
+  </main>
   <Footer />
 </template>
 <script setup>

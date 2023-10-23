@@ -15,7 +15,6 @@
         </div>
       </div>
     </div>
-
     <TrainerModal
       v-if="menuIsClicked"
       :trainer="selectedTrainer"
@@ -282,7 +281,6 @@ const closeModal = () => {
     padding: 120px 0 60px;
     h2 {
       font-size: 50px;
-
       font-weight: 600;
       @media screen and (max-width: 1024px) {
         text-align: center;
@@ -300,7 +298,6 @@ const closeModal = () => {
       border: none;
       background: none;
       cursor: pointer;
-      //user-select: none;
     }
   }
 }

@@ -6,12 +6,13 @@
       </div>
       <nav class="header__nav">
         <ul class="header__menu-items">
-          <li class="header__menu-item" @click="scrollTo('#about')">О школе</li>
-          <li class="header__menu-item" @click="scrollTo('#trainers')">
-            Тренеры
-          </li>
-          <li class="header__menu-item" @click="scrollTo('#pricing')">
-            Стоимость
+          <li
+            class="header__menu-item"
+            v-for="menuItem in menuItems"
+            :key="menuItem.id"
+            @click="scrollTo(menuItem.link)"
+          >
+            {{ menuItem.label }}
           </li>
         </ul>
       </nav>
@@ -30,37 +31,42 @@
             <div class="menu" v-if="openMenu">
               <ul class="menu__items">
                 <div class="close" @click="openMenu = !openMenu"></div>
-                <li class="menu__item" @click="scrollTo('#about')">О школе</li>
-                <li class="menu__item" @click="scrollTo('#trainers')">
-                  Тренеры
-                </li>
-                <li class="menu__item" @click="scrollTo('#pricing')">
-                  Стоимость
+                <li
+                  class="menu__item"
+                  v-for="menuItem in menuItems"
+                  :key="menuItem.id"
+                  @click="scrollTo(menuItem.link)"
+                >
+                  {{ menuItem.label }}
                 </li>
               </ul>
             </div>
-
             <Transition name="fade">
               <PhoneModal v-if="phoneIsClicked" />
             </Transition>
           </div>
         </div>
       </div>
-      <!-- <Menu if="openMenu" /> -->
     </div>
   </header>
 </template>
 <script setup>
 import { ref } from "vue";
-import PhoneModal from "./UI/PhoneModal.vue";
 import { scrollToSection } from "../helpers/scrollConfig.js";
-// import Menu from "./UI/Menu.vue";
+import PhoneModal from "./UI/PhoneModal.vue";
+
+const menuItems = [
+  { id: 1, label: "О школе", link: "#about" },
+  { id: 2, label: "Тренеры", link: "#trainers" },
+  { id: 3, label: "Стоимость", link: "#pricing" },
+];
+
 const phoneIsClicked = ref(false);
 const openMenu = ref(false);
-console.log(scroll);
 const showPhone = () => {
   phoneIsClicked.value = !phoneIsClicked.value;
 };
+
 const scrollTo = (section) => {
   scrollToSection(section, 500);
 };
@@ -147,6 +153,62 @@ const scrollTo = (section) => {
   }
 }
 
+.menu {
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  background-color: rgb(179, 174, 174);
+  padding: 20px;
+  height: 40vh;
+  top: -30px;
+  right: -10px;
+  list-style: none;
+
+  &__item {
+    cursor: pointer;
+    padding: 10px 0;
+    font-size: 36px;
+    text-align: center;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  &__items {
+    margin-top: 30px;
+  }
+  @media screen and (max-width: 624px) {
+    width: 100vw;
+  }
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+  &::after,
+  &::before {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transform: translateY(0);
@@ -157,57 +219,5 @@ const scrollTo = (section) => {
 .fade-leave-to {
   transform: translateY(20px);
   opacity: 0;
-}
-.menu {
-  position: absolute;
-  width: 300px;
-  background-color: rgb(179, 174, 174);
-  padding: 20px;
-  height: 40vh;
-  top: -30px;
-  right: -10px;
-  list-style: none;
-  @media screen and (max-width: 624px) {
-    width: 100vw;
-  }
-}
-.menu__items {
-  margin-top: 30px;
-}
-
-.menu__item {
-  cursor: pointer;
-  padding: 10px 0;
-  font-size: 36px;
-  text-align: center;
-  &:hover {
-    opacity: 0.8;
-  }
-}
-.close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 32px;
-  height: 32px;
-  opacity: 0.3;
-}
-.close:hover {
-  opacity: 1;
-}
-.close:before,
-.close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 2px;
-  background-color: #333;
-}
-.close:before {
-  transform: rotate(45deg);
-}
-.close:after {
-  transform: rotate(-45deg);
 }
 </style>
